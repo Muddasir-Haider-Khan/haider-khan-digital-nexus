@@ -144,7 +144,7 @@ const Index = () => {
               </span>
             </h1>
             <h2 className="text-2xl md:text-4xl text-slate-400 mb-8 font-light font-mono">
-              >> MUDDASIR HAIDER KHAN <<
+              {">>"} MUDDASIR HAIDER KHAN {"<<"}
             </h2>
             <div className="text-lg text-cyan-400 mb-4 font-mono tracking-wider">
               [QUANTUM AI ENGINEER | NEURAL ARCHITECT | CYBER DESIGNER]
@@ -188,13 +188,13 @@ const Index = () => {
                 [NEURAL_PROFILE_DATA]
               </h3>
               <div className="mb-6 p-4 holographic-card">
-                <div className="text-cyan-400 text-sm font-mono mb-2">>> INITIALIZATION_LOG:</div>
+                <div className="text-cyan-400 text-sm font-mono mb-2">{">>"} INITIALIZATION_LOG:</div>
                 <p className="text-slate-300 leading-relaxed mb-4">
                   Currently interfacing with quantum educational protocols in AI Engineering. 
                   Background systems optimized through years of neural design processes using 
                   Adobe Illustrator, Photoshop, and CorelDRAW quantum enhancers.
                 </p>
-                <div className="text-cyan-400 text-sm font-mono mb-2">>> EVOLUTION_PROTOCOL:</div>
+                <div className="text-cyan-400 text-sm font-mono mb-2">{">>"} EVOLUTION_PROTOCOL:</div>
                 <p className="text-slate-300 leading-relaxed">
                   Transitioned from traditional design matrices into quantum artificial intelligence, 
                   software engineering, and web technology architectures. Current projects demonstrate 
