@@ -370,15 +370,29 @@ const Index = () => {
             or wish to exchange data about technology and design — quantum communication channels are open.
           </p>
           <div className="flex justify-center gap-4 flex-wrap">
-            <Button size="lg" className="cyber-button bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white border-0 font-mono tracking-wider">
+            <Button 
+              size="lg" 
+              className="cyber-button bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white border-0 font-mono tracking-wider"
+              onClick={() => window.open('mailto:muddasirhaider048@gmail.com', '_blank')}
+            >
               <Mail className="w-5 h-5 mr-2" />
               [SEND_TRANSMISSION]
             </Button>
-            <Button variant="outline" size="lg" className="cyber-button border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 hover:text-cyan-300 font-mono tracking-wider">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="cyber-button border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 hover:text-cyan-300 font-mono tracking-wider"
+              onClick={() => window.open('https://github.com/Muddasir-Haider-Khan', '_blank')}
+            >
               <Github className="w-5 h-5 mr-2" />
               [ACCESS_REPOSITORY]
             </Button>
-            <Button variant="outline" size="lg" className="cyber-button border-purple-500 text-purple-400 hover:bg-purple-500/10 hover:text-purple-300 font-mono tracking-wider">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="cyber-button border-purple-500 text-purple-400 hover:bg-purple-500/10 hover:text-purple-300 font-mono tracking-wider"
+              onClick={() => window.open('https://www.linkedin.com/in/muddasir-haider-khan-281515299/', '_blank')}
+            >
               <Linkedin className="w-5 h-5 mr-2" />
               [NEURAL_NETWORK]
             </Button>
