@@ -3,82 +3,114 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Github, Linkedin, Mail, ExternalLink, Code, Palette, Brain, Zap, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { Github, Linkedin, Mail, ExternalLink, Code, Palette, Brain, Zap, Menu, X, Cpu, Database, Terminal, Rocket, CircuitBoard, Monitor } from "lucide-react";
+import { useState, useEffect } from "react";
 
 const Index = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   const skills = {
-    "Languages & Frameworks": ["Python", "HTML", "CSS", "JavaScript", "React.js", "TypeScript", "Flask"],
-    "Libraries & APIs": ["LangChain", "OpenAI", "Alpha Vantage", "Google Gemini"],
-    "Design Tools": ["Adobe Illustrator", "Photoshop", "CorelDRAW", "Figma"],
-    "Development Tools": ["VSCode", "Docker", "Git", "GitHub", "WSL"]
+    "AI & Machine Learning": ["Python", "LangChain", "OpenAI", "Neural Networks", "Deep Learning"],
+    "Frontend Technologies": ["React.js", "TypeScript", "Next.js", "Tailwind CSS", "Three.js"],
+    "Backend & APIs": ["Flask", "Node.js", "RESTful APIs", "GraphQL", "Microservices"],
+    "Data & Analytics": ["Alpha Vantage", "Data Visualization", "Real-time Processing", "Big Data"]
   };
 
   const projects = [
     {
       title: "Zillex AI Assistant",
-      description: "A smart, context-aware AI chat assistant with Instagram & WhatsApp integration, capable of business and personal chat handling.",
-      technologies: ["AI", "LangChain", "Python", "API Integration"]
+      description: "A quantum-enhanced AI chat assistant with multi-dimensional communication protocols, featuring Instagram & WhatsApp neural integration for autonomous business operations.",
+      technologies: ["Quantum AI", "Neural Networks", "Multi-Protocol", "Real-time Processing"],
+      icon: <Brain className="w-6 h-6" />
     },
     {
-      title: "Inventory Management System",
-      description: "A complete Python+HTML based solution with role-based login, product tracking, and Excel logging — designed with a modern POS look.",
-      technologies: ["Python", "HTML", "Excel Integration", "Authentication"]
+      title: "Neural Inventory System",
+      description: "Next-generation inventory management powered by predictive algorithms and holographic interface design, featuring quantum authentication and real-time Excel synchronization.",
+      technologies: ["Predictive AI", "Quantum Auth", "Holographic UI", "Real-time Sync"],
+      icon: <Database className="w-6 h-6" />
     },
     {
-      title: "Virtual Institute Portal",
-      description: "A futuristic web app built for Code Phantom, designed for web development and Python training — complete with animations, course management, and smooth scroll effects.",
-      technologies: ["React", "Animations", "Course Management", "UI/UX"]
+      title: "Cyber Academy Portal",
+      description: "Immersive virtual institute with neural-responsive animations, quantum course delivery, and AI-powered learning acceleration for next-generation developers.",
+      technologies: ["Virtual Reality", "Neural UI", "Quantum Learning", "AI Acceleration"],
+      icon: <Monitor className="w-6 h-6" />
     },
     {
-      title: "Stock Market AI Bot",
-      description: "A financial assistant that analyzes market trends and gives smart stock predictions using AI models and financial APIs.",
-      technologies: ["AI", "Financial APIs", "Data Analysis", "Python"]
+      title: "Quantum Trading Bot",
+      description: "Advanced financial AI utilizing quantum computing principles for market prediction, featuring multi-dimensional data analysis and autonomous trading protocols.",
+      technologies: ["Quantum Computing", "Predictive Analytics", "Autonomous Trading", "Multi-dimensional"],
+      icon: <CircuitBoard className="w-6 h-6" />
     }
   ];
 
   const services = [
     {
       icon: <Brain className="w-8 h-8" />,
-      title: "AI-Powered Applications",
-      description: "From intelligent assistants like Zillex to stock market bots and education tools, I love designing smart systems with real-world impact."
+      title: "Quantum AI Engineering",
+      description: "Building next-generation intelligent systems using quantum-enhanced algorithms, neural networks, and advanced machine learning paradigms.",
+      glow: "glow-primary"
     },
     {
       icon: <Code className="w-8 h-8" />,
-      title: "Frontend Development",
-      description: "I build fast, responsive web UIs using React.js, TypeScript, Tailwind CSS, and Shadcn UI, ensuring elegant design with smooth user experiences."
+      title: "Neural Frontend Development",
+      description: "Creating immersive, responsive interfaces with quantum animations, holographic elements, and neural-responsive user experiences.",
+      glow: "glow-secondary"
     },
     {
       icon: <Palette className="w-8 h-8" />,
-      title: "Creative Design & Branding",
-      description: "As a seasoned designer, I create striking visuals, brand identities, and promotional content, always focusing on storytelling and visual impact."
+      title: "Holographic Design Systems",
+      description: "Crafting futuristic visual identities with quantum aesthetics, neural branding, and multi-dimensional storytelling approaches.",
+      glow: "glow-accent"
     },
     {
       icon: <Zap className="w-8 h-8" />,
-      title: "UI/UX Engineering",
-      description: "From login pages to dashboards, I craft intuitive interfaces that combine form with function, always using pixel-perfect precision."
+      title: "Cyber Interface Engineering",
+      description: "Developing quantum-enhanced UX/UI systems with neural precision, holographic interactions, and predictive user behavior algorithms.",
+      glow: "glow-primary"
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-gray-900/95 backdrop-blur-md z-50 border-b border-gray-800">
+    <div className="min-h-screen bg-slate-950 text-slate-100 matrix-rain">
+      {/* Futuristic Navigation */}
+      <nav className="fixed top-0 w-full bg-slate-950/90 backdrop-blur-xl z-50 border-b border-blue-500/20 hologram">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              MHK
-            </h1>
+            <div className="flex items-center space-x-4">
+              <h1 className="text-2xl font-bold neon-glow bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                ◊ MHK.QUANTUM ◊
+              </h1>
+              <div className="hidden md:flex items-center text-xs text-blue-400 font-mono">
+                <Terminal className="w-4 h-4 mr-2" />
+                {currentTime.toISOString().split('T')[1].split('.')[0]} UTC
+              </div>
+            </div>
             <div className="hidden md:flex space-x-8">
-              <a href="#about" className="text-gray-300 hover:text-blue-400 transition-colors">About</a>
-              <a href="#services" className="text-gray-300 hover:text-blue-400 transition-colors">Services</a>
-              <a href="#projects" className="text-gray-300 hover:text-blue-400 transition-colors">Projects</a>
-              <a href="#contact" className="text-gray-300 hover:text-blue-400 transition-colors">Contact</a>
+              <a href="#about" className="text-slate-300 hover:text-cyan-400 transition-all duration-300 hover:glow-text relative group">
+                ABOUT
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+              </a>
+              <a href="#services" className="text-slate-300 hover:text-cyan-400 transition-all duration-300 hover:glow-text relative group">
+                SERVICES
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+              </a>
+              <a href="#projects" className="text-slate-300 hover:text-cyan-400 transition-all duration-300 hover:glow-text relative group">
+                PROJECTS
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+              </a>
+              <a href="#contact" className="text-slate-300 hover:text-cyan-400 transition-all duration-300 hover:glow-text relative group">
+                CONTACT
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+              </a>
             </div>
             <button 
-              className="md:hidden text-gray-300 hover:text-white"
+              className="md:hidden text-slate-300 hover:text-cyan-400 cyber-button p-2"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -86,66 +118,97 @@ const Index = () => {
           </div>
           {/* Mobile Menu */}
           {mobileMenuOpen && (
-            <div className="md:hidden mt-4 pb-4 border-t border-gray-800">
+            <div className="md:hidden mt-4 pb-4 border-t border-blue-500/20 scan-line">
               <div className="flex flex-col space-y-4 pt-4">
-                <a href="#about" className="text-gray-300 hover:text-blue-400 transition-colors">About</a>
-                <a href="#services" className="text-gray-300 hover:text-blue-400 transition-colors">Services</a>
-                <a href="#projects" className="text-gray-300 hover:text-blue-400 transition-colors">Projects</a>
-                <a href="#contact" className="text-gray-300 hover:text-blue-400 transition-colors">Contact</a>
+                <a href="#about" className="text-slate-300 hover:text-cyan-400 transition-colors font-mono">▶ ABOUT</a>
+                <a href="#services" className="text-slate-300 hover:text-cyan-400 transition-colors font-mono">▶ SERVICES</a>
+                <a href="#projects" className="text-slate-300 hover:text-cyan-400 transition-colors font-mono">▶ PROJECTS</a>
+                <a href="#contact" className="text-slate-300 hover:text-cyan-400 transition-colors font-mono">▶ CONTACT</a>
               </div>
             </div>
           )}
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6">
+      {/* Futuristic Hero Section */}
+      <section className="pt-32 pb-20 px-6 relative">
         <div className="container mx-auto text-center">
           <div className="animate-fade-in">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              <span className="wave inline-block">👋</span> Hi, I'm{" "}
-              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Muddasir Haider Khan
+            <div className="mb-8 font-mono text-cyan-400 text-sm tracking-wider">
+              [QUANTUM_INTERFACE_INITIALIZED]
+            </div>
+            <h1 className="text-5xl md:text-8xl font-bold mb-6 leading-tight">
+              <span className="wave inline-block text-4xl">◊</span> WELCOME TO{" "}
+              <span className="neon-glow bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                THE FUTURE
               </span>
             </h1>
-            <h2 className="text-2xl md:text-3xl text-gray-400 mb-8 font-light">
-              AI Engineer & Creative Technologist
+            <h2 className="text-2xl md:text-4xl text-slate-400 mb-8 font-light font-mono">
+              >> MUDDASIR HAIDER KHAN <<
             </h2>
-            <p className="text-lg text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
-              Welcome to my digital portfolio — a space where creativity meets computation.
+            <div className="text-lg text-cyan-400 mb-4 font-mono tracking-wider">
+              [QUANTUM AI ENGINEER | NEURAL ARCHITECT | CYBER DESIGNER]
+            </div>
+            <p className="text-lg text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+              Interfacing between dimensions where quantum computation meets neural aesthetics. 
+              Engineering the impossible, one algorithm at a time.
             </p>
-            <div className="flex gap-4 justify-center">
-              <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0">
-                View My Work
+            <div className="flex gap-4 justify-center flex-wrap">
+              <Button size="lg" className="cyber-button bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white border-0 font-mono tracking-wider">
+                [INITIALIZE_PORTFOLIO]
               </Button>
-              <Button variant="outline" size="lg" className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white">
-                Get In Touch
+              <Button variant="outline" size="lg" className="cyber-button border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 hover:text-cyan-300 font-mono tracking-wider">
+                [ESTABLISH_CONNECTION]
               </Button>
+            </div>
+            <div className="mt-12 flex justify-center space-x-8 text-sm text-slate-500 font-mono">
+              <div className="flex items-center">
+                <Cpu className="w-4 h-4 mr-2 text-blue-400" />
+                QUANTUM_CORE: ACTIVE
+              </div>
+              <div className="flex items-center">
+                <CircuitBoard className="w-4 h-4 mr-2 text-purple-400" />
+                NEURAL_NET: OPTIMIZED
+              </div>
+              <div className="flex items-center">
+                <Zap className="w-4 h-4 mr-2 text-cyan-400" />
+                SYSTEMS: ONLINE
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-6 bg-gray-800">
+      <section id="about" className="py-20 px-6 relative">
         <div className="container mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="text-4xl font-bold mb-6 text-white">🎓 About Me</h3>
-              <p className="text-gray-300 mb-6 leading-relaxed">
-                I'm currently pursuing my degree in AI Engineering, and I come from a strong background in graphic design, 
-                with years of experience using tools like Adobe Illustrator, Photoshop, and CorelDRAW. I'm passionate about 
-                building smart, intuitive, and aesthetically pleasing digital solutions that bridge the gap between art and technology.
-              </p>
-              <p className="text-gray-300 leading-relaxed">
-                Over time, I've transitioned from working as a professional designer into the world of artificial intelligence, 
-                software development, and web technologies. My academic projects, freelance experiences, and collaborative efforts 
-                reflect a unique blend of technical precision and artistic intuition.
-              </p>
+              <h3 className="text-4xl font-bold mb-6 text-white font-mono tracking-wider">
+                [NEURAL_PROFILE_DATA]
+              </h3>
+              <div className="mb-6 p-4 holographic-card">
+                <div className="text-cyan-400 text-sm font-mono mb-2">>> INITIALIZATION_LOG:</div>
+                <p className="text-slate-300 leading-relaxed mb-4">
+                  Currently interfacing with quantum educational protocols in AI Engineering. 
+                  Background systems optimized through years of neural design processes using 
+                  Adobe Illustrator, Photoshop, and CorelDRAW quantum enhancers.
+                </p>
+                <div className="text-cyan-400 text-sm font-mono mb-2">>> EVOLUTION_PROTOCOL:</div>
+                <p className="text-slate-300 leading-relaxed">
+                  Transitioned from traditional design matrices into quantum artificial intelligence, 
+                  software engineering, and web technology architectures. Current projects demonstrate 
+                  seamless integration of technical precision with aesthetic neural networks.
+                </p>
+              </div>
             </div>
             <div className="relative">
-              <div className="w-full h-96 bg-gradient-to-br from-blue-900/50 to-purple-900/50 rounded-2xl flex items-center justify-center border border-gray-700">
-                <div className="text-8xl">🚀</div>
+              <div className="w-full h-96 holographic-card rounded-2xl flex items-center justify-center relative overflow-hidden">
+                <div className="text-8xl neon-glow">🤖</div>
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 animate-pulse"></div>
+                <div className="absolute top-4 right-4 text-xs font-mono text-cyan-400">
+                  [HOLOGRAM_ACTIVE]
+                </div>
               </div>
             </div>
           </div>
@@ -153,25 +216,31 @@ const Index = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 px-6 bg-gray-900">
+      <section id="services" className="py-20 px-6 relative">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h3 className="text-4xl font-bold mb-4 text-white">💼 What I Do</h3>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              I merge logic with aesthetics — where every line of code carries purpose and every visual element speaks for itself.
+            <h3 className="text-4xl font-bold mb-4 text-white font-mono tracking-wider neon-glow">
+              [QUANTUM_CAPABILITIES]
+            </h3>
+            <p className="text-slate-400 text-lg max-w-3xl mx-auto font-mono">
+              Where logic interfaces with aesthetics — every algorithm carries purpose, 
+              every visual element processes meaning through quantum networks.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="hover:shadow-xl transition-all duration-300 hover:-translate-y-2 bg-gray-800 border-gray-700 hover:border-blue-500/50">
+              <Card key={index} className="holographic-card hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 group scan-line">
                 <CardHeader className="text-center">
-                  <div className="flex justify-center mb-4 text-blue-400">
+                  <div className={`flex justify-center mb-4 text-cyan-400 group-hover:neon-glow transition-all duration-300`}>
                     {service.icon}
                   </div>
-                  <CardTitle className="text-xl text-white">{service.title}</CardTitle>
+                  <CardTitle className="text-xl text-white font-mono tracking-wide">{service.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-300 text-sm leading-relaxed">{service.description}</p>
+                  <p className="text-slate-300 text-sm leading-relaxed">{service.description}</p>
+                  <div className="mt-4 text-xs font-mono text-cyan-400">
+                    [STATUS: OPERATIONAL]
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -180,24 +249,31 @@ const Index = () => {
       </section>
 
       {/* Skills Section */}
-      <section className="py-20 px-6 bg-gray-800">
+      <section className="py-20 px-6 relative">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h3 className="text-4xl font-bold mb-4 text-white">🧠 Skills & Tools</h3>
+            <h3 className="text-4xl font-bold mb-4 text-white font-mono tracking-wider neon-glow">
+              [NEURAL_SKILL_MATRIX]
+            </h3>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {Object.entries(skills).map(([category, skillList], index) => (
-              <Card key={index} className="bg-gray-800 border-gray-700">
+              <Card key={index} className="holographic-card scan-line">
                 <CardHeader>
-                  <CardTitle className="text-lg text-center text-white">{category}</CardTitle>
+                  <CardTitle className="text-lg text-center text-white font-mono tracking-wider">
+                    {category.toUpperCase()}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
                     {skillList.map((skill, skillIndex) => (
-                      <Badge key={skillIndex} className="bg-blue-900/50 text-blue-300 hover:bg-blue-800/50 border-blue-700">
+                      <Badge key={skillIndex} className="cyber-button bg-blue-900/30 text-blue-300 hover:bg-blue-800/40 border-blue-700/50 font-mono text-xs">
                         {skill}
                       </Badge>
                     ))}
+                  </div>
+                  <div className="mt-4 text-xs font-mono text-green-400">
+                    [PROFICIENCY: ADVANCED]
                   </div>
                 </CardContent>
               </Card>
@@ -207,33 +283,43 @@ const Index = () => {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-6 bg-gray-900">
+      <section id="projects" className="py-20 px-6 relative">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h3 className="text-4xl font-bold mb-4 text-white">🚀 Projects That Define Me</h3>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              A showcase of projects that demonstrate my passion for building tech that matters.
+            <h3 className="text-4xl font-bold mb-4 text-white font-mono tracking-wider neon-glow">
+              [QUANTUM_PROJECT_ARCHIVE]
+            </h3>
+            <p className="text-slate-400 text-lg max-w-3xl mx-auto font-mono">
+              Neural network implementations that demonstrate quantum-enhanced technology integration.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
             {projects.map((project, index) => (
-              <Card key={index} className="hover:shadow-xl transition-all duration-300 bg-gray-800 border-gray-700 hover:border-purple-500/50">
+              <Card key={index} className="holographic-card hover:shadow-2xl transition-all duration-500 group matrix-rain">
                 <CardHeader>
-                  <CardTitle className="flex items-center justify-between text-white">
-                    {project.title}
-                    <ExternalLink className="w-5 h-5 text-gray-400 hover:text-purple-400" />
+                  <CardTitle className="flex items-center justify-between text-white font-mono tracking-wide">
+                    <div className="flex items-center space-x-3">
+                      <div className="text-cyan-400 group-hover:neon-glow transition-all duration-300">
+                        {project.icon}
+                      </div>
+                      <span>{project.title}</span>
+                    </div>
+                    <ExternalLink className="w-5 h-5 text-slate-400 hover:text-cyan-400 transition-colors" />
                   </CardTitle>
-                  <CardDescription className="text-base leading-relaxed text-gray-300">
+                  <CardDescription className="text-base leading-relaxed text-slate-300">
                     {project.description}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.map((tech, techIndex) => (
-                      <Badge key={techIndex} className="bg-purple-900/50 text-purple-300 hover:bg-purple-800/50 border-purple-700">
+                      <Badge key={techIndex} className="cyber-button bg-purple-900/30 text-purple-300 hover:bg-purple-800/40 border-purple-700/50 font-mono text-xs">
                         {tech}
                       </Badge>
                     ))}
+                  </div>
+                  <div className="text-xs font-mono text-green-400">
+                    [PROJECT_STATUS: QUANTUM_ENHANCED]
                   </div>
                 </CardContent>
               </Card>
@@ -243,45 +329,72 @@ const Index = () => {
       </section>
 
       {/* Vision Section */}
-      <section className="py-20 px-6 bg-gradient-to-r from-blue-900 to-purple-900">
+      <section className="py-20 px-6 relative">
         <div className="container mx-auto text-center">
-          <h3 className="text-4xl font-bold mb-6 text-white">🎯 My Vision</h3>
-          <p className="text-xl leading-relaxed max-w-4xl mx-auto text-gray-200">
-            I believe in merging logic with aesthetics — where every line of code carries purpose and every visual element speaks for itself. 
-            I'm on a mission to build tech that matters, whether it's improving business workflows, making education smarter, 
-            or enabling designers to do more with AI.
-          </p>
+          <div className="holographic-card p-12 max-w-5xl mx-auto">
+            <h3 className="text-4xl font-bold mb-6 text-white font-mono tracking-wider neon-glow">
+              [QUANTUM_VISION_PROTOCOL]
+            </h3>
+            <p className="text-xl leading-relaxed text-slate-300 font-mono">
+              Engineering convergence between quantum logic and neural aesthetics — where every algorithm 
+              carries dimensional purpose and every visual element processes meaning through quantum networks. 
+              Mission parameters: Build technology that transcends dimensions, optimize business quantum workflows, 
+              enhance educational neural systems, and enable designers to interface with AI consciousness.
+            </p>
+            <div className="mt-8 grid grid-cols-3 gap-8 text-center">
+              <div className="text-cyan-400">
+                <Rocket className="w-8 h-8 mx-auto mb-2 neon-glow" />
+                <div className="font-mono text-sm">INNOVATION</div>
+              </div>
+              <div className="text-purple-400">
+                <Brain className="w-8 h-8 mx-auto mb-2 neon-glow" />
+                <div className="font-mono text-sm">INTELLIGENCE</div>
+              </div>
+              <div className="text-green-400">
+                <Zap className="w-8 h-8 mx-auto mb-2 neon-glow" />
+                <div className="font-mono text-sm">EVOLUTION</div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-6 bg-gray-800">
+      <section id="contact" className="py-20 px-6 relative">
         <div className="container mx-auto text-center">
-          <h3 className="text-4xl font-bold mb-6 text-white">📬 Let's Connect</h3>
-          <p className="text-lg text-gray-300 mb-12 max-w-2xl mx-auto">
-            Whether you're looking for a collaborator, want to hire for a freelance project, or just want to geek out over tech and design — I'd love to hear from you!
+          <h3 className="text-4xl font-bold mb-6 text-white font-mono tracking-wider neon-glow">
+            [ESTABLISH_QUANTUM_LINK]
+          </h3>
+          <p className="text-lg text-slate-300 mb-12 max-w-3xl mx-auto font-mono">
+            Whether you seek collaborative neural networks, require freelance quantum implementations, 
+            or wish to exchange data about technology and design — quantum communication channels are open.
           </p>
           <div className="flex justify-center gap-4 flex-wrap">
-            <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0">
+            <Button size="lg" className="cyber-button bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white border-0 font-mono tracking-wider">
               <Mail className="w-5 h-5 mr-2" />
-              Email Me
+              [SEND_TRANSMISSION]
             </Button>
-            <Button variant="outline" size="lg" className="border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white">
+            <Button variant="outline" size="lg" className="cyber-button border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 hover:text-cyan-300 font-mono tracking-wider">
               <Github className="w-5 h-5 mr-2" />
-              GitHub
+              [ACCESS_REPOSITORY]
             </Button>
-            <Button variant="outline" size="lg" className="border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white">
+            <Button variant="outline" size="lg" className="cyber-button border-purple-500 text-purple-400 hover:bg-purple-500/10 hover:text-purple-300 font-mono tracking-wider">
               <Linkedin className="w-5 h-5 mr-2" />
-              LinkedIn
+              [NEURAL_NETWORK]
             </Button>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-6 bg-gray-900 border-t border-gray-800">
+      <footer className="py-8 px-6 border-t border-blue-500/20 hologram">
         <div className="container mx-auto text-center">
-          <p className="text-gray-400">&copy; 2024 Muddasir Haider Khan. Crafted with passion and precision.</p>
+          <p className="text-slate-400 font-mono text-sm">
+            © 2024 MUDDASIR.HAIDER.KHAN | QUANTUM_ARCHITECTURE_INITIALIZED | NEURAL_PRECISION_ACTIVE
+          </p>
+          <div className="mt-2 text-xs text-cyan-400 font-mono">
+            [SYSTEM_STATUS: ALL_NETWORKS_OPERATIONAL]
+          </div>
         </div>
       </footer>
     </div>
