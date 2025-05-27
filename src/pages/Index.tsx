@@ -9,10 +9,19 @@ import { useState, useEffect } from "react";
 const Index = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
     return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const skills = {
@@ -78,52 +87,106 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 matrix-rain">
-      {/* Futuristic Navigation */}
-      <nav className="fixed top-0 w-full bg-slate-950/90 backdrop-blur-xl z-50 border-b border-blue-500/20 hologram">
+      {/* Enhanced Futuristic Navigation */}
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        scrolled 
+          ? 'bg-slate-950/95 backdrop-blur-2xl border-b border-cyan-500/30 shadow-[0_0_20px_rgba(6,182,212,0.2)]' 
+          : 'bg-slate-950/90 backdrop-blur-xl border-b border-blue-500/20'
+      } hologram`}>
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <h1 className="text-2xl font-bold neon-glow bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
-                ◊ MHK.QUANTUM ◊
-              </h1>
-              <div className="hidden md:flex items-center text-xs text-blue-400 font-mono">
-                <Terminal className="w-4 h-4 mr-2" />
-                {currentTime.toISOString().split('T')[1].split('.')[0]} UTC
+            <div className="flex items-center space-x-6">
+              {/* Enhanced Logo */}
+              <div className="relative group">
+                <h1 className="text-2xl md:text-3xl font-bold neon-glow bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent hover:from-cyan-400 hover:via-blue-400 hover:to-purple-400 transition-all duration-500 cursor-pointer">
+                  <span className="inline-block animate-pulse">◊</span> MHK.QUANTUM <span className="inline-block animate-pulse">◊</span>
+                </h1>
+                <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 group-hover:w-full transition-all duration-500"></div>
+              </div>
+              
+              {/* Enhanced Status Display */}
+              <div className="hidden md:flex items-center space-x-4 text-xs">
+                <div className="flex items-center text-blue-400 font-mono bg-blue-950/30 px-3 py-1 rounded-full border border-blue-500/30">
+                  <Terminal className="w-4 h-4 mr-2 animate-pulse" />
+                  {currentTime.toISOString().split('T')[1].split('.')[0]} UTC
+                </div>
+                <div className="flex items-center text-green-400 font-mono bg-green-950/30 px-3 py-1 rounded-full border border-green-500/30">
+                  <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-ping"></div>
+                  SYSTEMS ONLINE
+                </div>
               </div>
             </div>
+
+            {/* Enhanced Navigation Links */}
             <div className="hidden md:flex space-x-8">
-              <a href="#about" className="text-slate-300 hover:text-cyan-400 transition-all duration-300 hover:glow-text relative group">
-                ABOUT
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
-              </a>
-              <a href="#services" className="text-slate-300 hover:text-cyan-400 transition-all duration-300 hover:glow-text relative group">
-                SERVICES
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
-              </a>
-              <a href="#projects" className="text-slate-300 hover:text-cyan-400 transition-all duration-300 hover:glow-text relative group">
-                PROJECTS
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
-              </a>
-              <a href="#contact" className="text-slate-300 hover:text-cyan-400 transition-all duration-300 hover:glow-text relative group">
-                CONTACT
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
-              </a>
+              {[
+                { href: "#about", label: "ABOUT", icon: <Brain className="w-4 h-4" /> },
+                { href: "#services", label: "SERVICES", icon: <Code className="w-4 h-4" /> },
+                { href: "#projects", label: "PROJECTS", icon: <Rocket className="w-4 h-4" /> },
+                { href: "#contact", label: "CONTACT", icon: <Zap className="w-4 h-4" /> }
+              ].map((item, index) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="relative group flex items-center space-x-2 text-slate-300 hover:text-cyan-400 transition-all duration-300 font-mono tracking-wider px-4 py-2 rounded-lg hover:bg-cyan-500/10 border border-transparent hover:border-cyan-500/30"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <span className="group-hover:animate-pulse transition-all duration-300">{item.icon}</span>
+                  <span className="relative">
+                    {item.label}
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
+                </a>
+              ))}
             </div>
+
+            {/* Enhanced Mobile Menu Button */}
             <button 
-              className="md:hidden text-slate-300 hover:text-cyan-400 cyber-button p-2"
+              className="md:hidden relative group cyber-button p-3 bg-slate-800/50 hover:bg-cyan-500/20 border border-slate-600 hover:border-cyan-500/50 rounded-lg transition-all duration-300"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              <div className="relative w-6 h-6">
+                {mobileMenuOpen ? (
+                  <X className="w-6 h-6 text-cyan-400 animate-pulse" />
+                ) : (
+                  <Menu className="w-6 h-6 text-slate-300 group-hover:text-cyan-400 transition-colors" />
+                )}
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-purple-400/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </button>
           </div>
-          {/* Mobile Menu */}
+
+          {/* Enhanced Mobile Menu */}
           {mobileMenuOpen && (
-            <div className="md:hidden mt-4 pb-4 border-t border-blue-500/20 scan-line">
-              <div className="flex flex-col space-y-4 pt-4">
-                <a href="#about" className="text-slate-300 hover:text-cyan-400 transition-colors font-mono">▶ ABOUT</a>
-                <a href="#services" className="text-slate-300 hover:text-cyan-400 transition-colors font-mono">▶ SERVICES</a>
-                <a href="#projects" className="text-slate-300 hover:text-cyan-400 transition-colors font-mono">▶ PROJECTS</a>
-                <a href="#contact" className="text-slate-300 hover:text-cyan-400 transition-colors font-mono">▶ CONTACT</a>
+            <div className="md:hidden mt-6 pb-6 border-t border-cyan-500/30 scan-line animate-fade-in">
+              <div className="flex flex-col space-y-4 pt-6">
+                {[
+                  { href: "#about", label: "ABOUT", icon: <Brain className="w-4 h-4" /> },
+                  { href: "#services", label: "SERVICES", icon: <Code className="w-4 h-4" /> },
+                  { href: "#projects", label: "PROJECTS", icon: <Rocket className="w-4 h-4" /> },
+                  { href: "#contact", label: "CONTACT", icon: <Zap className="w-4 h-4" /> }
+                ].map((item, index) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    className="group flex items-center space-x-3 text-slate-300 hover:text-cyan-400 transition-all duration-300 font-mono px-4 py-3 rounded-lg hover:bg-cyan-500/10 border border-transparent hover:border-cyan-500/30"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <span className="group-hover:animate-pulse text-cyan-400">{item.icon}</span>
+                    <span className="relative">
+                      ▶ {item.label}
+                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+                    </span>
+                  </a>
+                ))}
+                <div className="mt-4 pt-4 border-t border-slate-700/50">
+                  <div className="flex items-center justify-center text-xs text-cyan-400 font-mono">
+                    <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-ping"></div>
+                    QUANTUM_INTERFACE_ACTIVE
+                  </div>
+                </div>
               </div>
             </div>
           )}
