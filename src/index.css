@@ -44,10 +44,12 @@
     --sidebar-border: 51 65 85;
     --sidebar-ring: 59 130 246;
 
-    /* Futuristic glow colors */
+    /* Enhanced futuristic glow colors */
     --glow-primary: 0 150 255;
     --glow-secondary: 138 43 226;
     --glow-accent: 0 255 157;
+    --glow-warning: 255 193 7;
+    --glow-danger: 220 53 69;
   }
 
   .dark {
@@ -97,31 +99,38 @@
   body {
     @apply bg-background text-foreground;
     scroll-behavior: smooth;
-    background: radial-gradient(ellipse at top, rgba(0, 150, 255, 0.05) 0%, rgba(4, 6, 16, 1) 50%),
-                linear-gradient(180deg, rgba(4, 6, 16, 1) 0%, rgba(15, 23, 42, 1) 100%);
+    background: 
+      radial-gradient(ellipse at top left, rgba(0, 150, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(ellipse at top right, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom left, rgba(0, 255, 157, 0.05) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom right, rgba(255, 193, 7, 0.05) 0%, transparent 50%),
+      linear-gradient(180deg, rgba(4, 6, 16, 1) 0%, rgba(15, 23, 42, 1) 100%);
     color: rgb(240 248 255);
     font-family: 'Inter', system-ui, sans-serif;
     overflow-x: hidden;
   }
 
-  /* Futuristic grid background */
+  /* Enhanced futuristic grid background with animation */
   body::before {
     content: '';
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 120%;
+    height: 120%;
     background-image: 
-      linear-gradient(rgba(0, 150, 255, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 150, 255, 0.1) 1px, transparent 1px);
-    background-size: 50px 50px;
+      linear-gradient(rgba(0, 150, 255, 0.15) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 150, 255, 0.15) 1px, transparent 1px),
+      linear-gradient(rgba(138, 43, 226, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(138, 43, 226, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px, 50px 50px, 100px 100px, 100px 100px;
+    background-position: 0 0, 0 0, 25px 25px, 25px 25px;
     pointer-events: none;
     z-index: -1;
-    animation: grid-move 20s linear infinite;
+    animation: grid-flow 30s linear infinite;
   }
 
-  /* Floating particles */
+  /* Enhanced floating particles with multiple layers */
   body::after {
     content: '';
     position: fixed;
@@ -129,15 +138,18 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: radial-gradient(2px 2px at 20px 30px, rgba(0, 255, 157, 0.3), transparent),
-                      radial-gradient(2px 2px at 40px 70px, rgba(0, 150, 255, 0.4), transparent),
-                      radial-gradient(1px 1px at 90px 40px, rgba(138, 43, 226, 0.3), transparent),
-                      radial-gradient(1px 1px at 130px 80px, rgba(0, 255, 157, 0.4), transparent);
+    background-image: 
+      radial-gradient(2px 2px at 20px 30px, rgba(0, 255, 157, 0.4), transparent),
+      radial-gradient(2px 2px at 40px 70px, rgba(0, 150, 255, 0.5), transparent),
+      radial-gradient(1px 1px at 90px 40px, rgba(138, 43, 226, 0.4), transparent),
+      radial-gradient(1px 1px at 130px 80px, rgba(0, 255, 157, 0.5), transparent),
+      radial-gradient(3px 3px at 160px 30px, rgba(255, 193, 7, 0.3), transparent),
+      radial-gradient(2px 2px at 190px 90px, rgba(220, 53, 69, 0.3), transparent);
     background-repeat: repeat;
     background-size: 200px 100px;
     pointer-events: none;
     z-index: -1;
-    animation: particles-float 15s ease-in-out infinite;
+    animation: particles-dance 20s ease-in-out infinite;
   }
 }
 
@@ -158,34 +170,50 @@
     100% { transform: rotate(0deg); }
   }
 
-  /* Futuristic animations */
-  @keyframes grid-move {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(50px, 50px); }
+  /* Enhanced futuristic animations */
+  @keyframes grid-flow {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(50px, 25px) rotate(0.5deg); }
+    50% { transform: translate(100px, 50px) rotate(0deg); }
+    75% { transform: translate(50px, 75px) rotate(-0.5deg); }
+    100% { transform: translate(0, 100px) rotate(0deg); }
   }
 
-  @keyframes particles-float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    33% { transform: translateY(-30px) rotate(120deg); }
-    66% { transform: translateY(30px) rotate(240deg); }
+  @keyframes particles-dance {
+    0%, 100% { 
+      transform: translateY(0) rotate(0deg) scale(1); 
+      opacity: 0.7;
+    }
+    25% { 
+      transform: translateY(-30px) rotate(90deg) scale(1.1); 
+      opacity: 0.9;
+    }
+    50% { 
+      transform: translateY(-60px) rotate(180deg) scale(0.9); 
+      opacity: 1;
+    }
+    75% { 
+      transform: translateY(-30px) rotate(270deg) scale(1.1); 
+      opacity: 0.8;
+    }
   }
 
   .animate-fade-in {
-    animation: fadeIn 1s ease-out;
+    animation: fadeIn 1.5s ease-out;
   }
 
   @keyframes fadeIn {
     from {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(50px) rotateX(10deg);
     }
     to {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) rotateX(0deg);
     }
   }
 
-  /* Futuristic glow effects */
+  /* Enhanced glow effects with multiple colors */
   .glow-text {
     text-shadow: 0 0 10px rgb(var(--glow-primary)), 
                  0 0 20px rgb(var(--glow-primary)), 
@@ -200,19 +228,23 @@
 
   .hologram {
     background: linear-gradient(135deg, 
-      rgba(0, 150, 255, 0.1) 0%, 
-      rgba(138, 43, 226, 0.1) 50%, 
-      rgba(0, 255, 157, 0.1) 100%);
-    backdrop-filter: blur(10px);
+      rgba(0, 150, 255, 0.15) 0%, 
+      rgba(138, 43, 226, 0.15) 30%,
+      rgba(0, 255, 157, 0.15) 60%,
+      rgba(255, 193, 7, 0.1) 100%);
+    backdrop-filter: blur(15px);
     border: 1px solid rgba(0, 150, 255, 0.3);
   }
 
   .cyber-button {
     position: relative;
-    background: linear-gradient(135deg, rgba(0, 150, 255, 0.2), rgba(138, 43, 226, 0.2));
+    background: linear-gradient(135deg, 
+      rgba(0, 150, 255, 0.2), 
+      rgba(138, 43, 226, 0.2),
+      rgba(0, 255, 157, 0.1));
     border: 1px solid rgba(0, 150, 255, 0.5);
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
   }
 
   .cyber-button::before {
@@ -222,8 +254,11 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(255, 255, 255, 0.3), 
+      transparent);
+    transition: left 0.6s;
   }
 
   .cyber-button:hover::before {
@@ -231,24 +266,32 @@
   }
 
   .cyber-button:hover {
-    box-shadow: 0 0 30px rgba(0, 150, 255, 0.5);
+    box-shadow: 
+      0 0 30px rgba(0, 150, 255, 0.6),
+      0 0 60px rgba(138, 43, 226, 0.4),
+      inset 0 0 20px rgba(0, 255, 157, 0.2);
     border-color: rgba(0, 255, 157, 0.8);
+    transform: translateY(-2px);
   }
 
   .neon-glow {
-    animation: neon-pulse 2s ease-in-out infinite alternate;
+    animation: neon-pulse 3s ease-in-out infinite alternate;
   }
 
   @keyframes neon-pulse {
     from {
-      text-shadow: 0 0 10px rgb(var(--glow-primary)), 
-                   0 0 20px rgb(var(--glow-primary)), 
-                   0 0 40px rgb(var(--glow-primary));
+      text-shadow: 
+        0 0 10px rgb(var(--glow-primary)), 
+        0 0 20px rgb(var(--glow-primary)), 
+        0 0 40px rgb(var(--glow-primary)),
+        0 0 80px rgb(var(--glow-primary));
     }
     to {
-      text-shadow: 0 0 5px rgb(var(--glow-primary)), 
-                   0 0 10px rgb(var(--glow-primary)), 
-                   0 0 15px rgb(var(--glow-primary));
+      text-shadow: 
+        0 0 5px rgb(var(--glow-primary)), 
+        0 0 10px rgb(var(--glow-primary)), 
+        0 0 15px rgb(var(--glow-primary)),
+        0 0 30px rgb(var(--glow-primary));
     }
   }
 
@@ -264,13 +307,17 @@
     left: 0;
     width: 100%;
     height: 200%;
-    background: linear-gradient(transparent, rgba(0, 255, 157, 0.03), transparent);
-    animation: matrix-fall 3s linear infinite;
+    background: linear-gradient(
+      transparent, 
+      rgba(0, 255, 157, 0.05), 
+      rgba(0, 150, 255, 0.03),
+      transparent);
+    animation: matrix-cascade 4s linear infinite;
   }
 
-  @keyframes matrix-fall {
-    0% { transform: translateY(-100%); }
-    100% { transform: translateY(100%); }
+  @keyframes matrix-cascade {
+    0% { transform: translateY(-100%) skewY(2deg); }
+    100% { transform: translateY(100%) skewY(-2deg); }
   }
 
   .scan-line {
@@ -285,43 +332,104 @@
     left: 0;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(0, 255, 157, 0.8), transparent);
-    animation: scan 2s ease-in-out infinite;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(0, 255, 157, 0.9), 
+      rgba(0, 150, 255, 0.7),
+      transparent);
+    animation: scan-sweep 3s ease-in-out infinite;
   }
 
-  @keyframes scan {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(300px); opacity: 0; }
+  @keyframes scan-sweep {
+    0% { transform: translateY(0) scaleX(0.5); opacity: 1; }
+    50% { transform: translateY(150px) scaleX(1); opacity: 0.8; }
+    100% { transform: translateY(300px) scaleX(0.5); opacity: 0; }
   }
 
   .data-flow {
-    animation: data-stream 4s linear infinite;
+    animation: data-stream 5s linear infinite;
   }
 
   @keyframes data-stream {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
+    0% { transform: translateX(-100%) rotateY(0deg); }
+    50% { transform: translateX(50%) rotateY(180deg); }
+    100% { transform: translateX(100%) rotateY(360deg); }
   }
 
   .holographic-card {
     background: linear-gradient(135deg, 
-      rgba(0, 150, 255, 0.05) 0%, 
-      rgba(138, 43, 226, 0.05) 50%, 
-      rgba(0, 255, 157, 0.05) 100%);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 150, 255, 0.2);
+      rgba(0, 150, 255, 0.08) 0%, 
+      rgba(138, 43, 226, 0.08) 25%,
+      rgba(0, 255, 157, 0.08) 50%,
+      rgba(255, 193, 7, 0.05) 75%,
+      rgba(220, 53, 69, 0.05) 100%);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(0, 150, 255, 0.25);
     box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.3),
-      inset 0 1px 1px rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
+      0 8px 32px rgba(0, 0, 0, 0.4),
+      inset 0 1px 1px rgba(255, 255, 255, 0.15),
+      0 0 0 1px rgba(0, 150, 255, 0.1);
+    transition: all 0.4s ease;
+    position: relative;
   }
 
   .holographic-card:hover {
-    border-color: rgba(0, 255, 157, 0.4);
+    border-color: rgba(0, 255, 157, 0.5);
     box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.3),
-      0 0 20px rgba(0, 150, 255, 0.2),
-      inset 0 1px 1px rgba(255, 255, 255, 0.1);
-    transform: translateY(-5px);
+      0 12px 48px rgba(0, 0, 0, 0.4),
+      0 0 30px rgba(0, 150, 255, 0.3),
+      0 0 60px rgba(138, 43, 226, 0.2),
+      inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    transform: translateY(-8px) rotateX(2deg);
+  }
+
+  .holographic-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+      transparent 30%, 
+      rgba(255, 255, 255, 0.1) 50%, 
+      transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .holographic-card:hover::before {
+    opacity: 1;
+    animation: shimmer 2s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) rotate(45deg); }
+  }
+
+  /* Additional utility animations */
+  .floating {
+    animation: floating 6s ease-in-out infinite;
+  }
+
+  @keyframes floating {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(2deg); }
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 4s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { 
+      box-shadow: 0 0 20px rgba(0, 150, 255, 0.4);
+    }
+    50% { 
+      box-shadow: 0 0 40px rgba(0, 150, 255, 0.8), 
+                  0 0 80px rgba(138, 43, 226, 0.4);
+    }
   }
 }

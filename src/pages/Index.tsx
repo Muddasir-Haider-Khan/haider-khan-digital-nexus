@@ -1,15 +1,15 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Github, Linkedin, Mail, ExternalLink, Code, Palette, Brain, Zap, Menu, X, Cpu, Database, Terminal, Rocket, CircuitBoard, Monitor } from "lucide-react";
+import { Github, Linkedin, Mail, ExternalLink, Code, Palette, Brain, Zap, Menu, X, Cpu, Database, Terminal, Rocket, CircuitBoard, Monitor, Star, Download, Play, TrendingUp, Users, Award, Globe } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const Index = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [scrolled, setScrolled] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
@@ -24,6 +24,14 @@ const Index = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   const skills = {
     "AI & Machine Learning": ["Python", "LangChain", "OpenAI", "Neural Networks", "Deep Learning"],
     "Frontend Technologies": ["React.js", "TypeScript", "Next.js", "Tailwind CSS", "Three.js"],
@@ -36,25 +44,33 @@ const Index = () => {
       title: "Zillex AI Assistant",
       description: "A quantum-enhanced AI chat assistant with multi-dimensional communication protocols, featuring Instagram & WhatsApp neural integration for autonomous business operations.",
       technologies: ["Quantum AI", "Neural Networks", "Multi-Protocol", "Real-time Processing"],
-      icon: <Brain className="w-6 h-6" />
+      icon: <Brain className="w-6 h-6" />,
+      status: "ACTIVE",
+      completion: 95
     },
     {
       title: "Neural Inventory System",
       description: "Next-generation inventory management powered by predictive algorithms and holographic interface design, featuring quantum authentication and real-time Excel synchronization.",
       technologies: ["Predictive AI", "Quantum Auth", "Holographic UI", "Real-time Sync"],
-      icon: <Database className="w-6 h-6" />
+      icon: <Database className="w-6 h-6" />,
+      status: "OPTIMIZING",
+      completion: 87
     },
     {
       title: "Cyber Academy Portal",
       description: "Immersive virtual institute with neural-responsive animations, quantum course delivery, and AI-powered learning acceleration for next-generation developers.",
       technologies: ["Virtual Reality", "Neural UI", "Quantum Learning", "AI Acceleration"],
-      icon: <Monitor className="w-6 h-6" />
+      icon: <Monitor className="w-6 h-6" />,
+      status: "DEPLOYING",
+      completion: 92
     },
     {
       title: "Quantum Trading Bot",
       description: "Advanced financial AI utilizing quantum computing principles for market prediction, featuring multi-dimensional data analysis and autonomous trading protocols.",
       technologies: ["Quantum Computing", "Predictive Analytics", "Autonomous Trading", "Multi-dimensional"],
-      icon: <CircuitBoard className="w-6 h-6" />
+      icon: <CircuitBoard className="w-6 h-6" />,
+      status: "TESTING",
+      completion: 78
     }
   ];
 
@@ -85,8 +101,56 @@ const Index = () => {
     }
   ];
 
+  const stats = [
+    { icon: <Rocket className="w-6 h-6" />, value: "50+", label: "Projects Completed", color: "text-cyan-400" },
+    { icon: <Users className="w-6 h-6" />, value: "25+", label: "Happy Clients", color: "text-purple-400" },
+    { icon: <Award className="w-6 h-6" />, value: "3+", label: "Years Experience", color: "text-green-400" },
+    { icon: <Globe className="w-6 h-6" />, value: "∞", label: "Quantum Possibilities", color: "text-blue-400" }
+  ];
+
+  const testimonials = [
+    {
+      name: "Dr. Sarah Chen",
+      role: "AI Research Director",
+      company: "TechFuture Labs",
+      content: "Muddasir's quantum-enhanced solutions revolutionized our data processing capabilities. His neural network implementations are simply extraordinary.",
+      rating: 5
+    },
+    {
+      name: "Marcus Rodriguez",
+      role: "CEO",
+      company: "DigitalVortex Inc",
+      content: "The holographic interface designs delivered by Muddasir exceeded all expectations. True quantum-level innovation in every pixel.",
+      rating: 5
+    },
+    {
+      name: "Elena Kowalski",
+      role: "CTO",
+      company: "NeuralSync Corp",
+      content: "Working with Muddasir was like collaborating with the future itself. His AI engineering skills are decades ahead of the curve.",
+      rating: 5
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 matrix-rain">
+    <div className="min-h-screen bg-slate-950 text-slate-100 matrix-rain relative overflow-hidden">
+      {/* Interactive Background Elements */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        {/* Floating Orbs */}
+        <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500/20 rounded-full blur-xl animate-pulse"></div>
+        <div className="absolute top-40 right-20 w-24 h-24 bg-purple-500/20 rounded-full blur-xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-32 left-1/4 w-40 h-40 bg-cyan-500/20 rounded-full blur-xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        
+        {/* Mouse Follower */}
+        <div 
+          className="absolute w-64 h-64 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-3xl transition-all duration-300 ease-out"
+          style={{
+            left: mousePosition.x - 128,
+            top: mousePosition.y - 128,
+          }}
+        ></div>
+      </div>
+
       {/* Enhanced Futuristic Navigation */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         scrolled 
@@ -193,9 +257,9 @@ const Index = () => {
         </div>
       </nav>
 
-      {/* Futuristic Hero Section */}
+      {/* Enhanced Hero Section with Floating Elements */}
       <section className="pt-32 pb-20 px-6 relative">
-        <div className="container mx-auto text-center">
+        <div className="container mx-auto text-center relative z-10">
           <div className="animate-fade-in">
             <div className="mb-8 font-mono text-cyan-400 text-sm tracking-wider">
               [QUANTUM_INTERFACE_INITIALIZED]
@@ -216,14 +280,34 @@ const Index = () => {
               Interfacing between dimensions where quantum computation meets neural aesthetics. 
               Engineering the impossible, one algorithm at a time.
             </p>
-            <div className="flex gap-4 justify-center flex-wrap">
+            <div className="flex gap-4 justify-center flex-wrap mb-8">
               <Button size="lg" className="cyber-button bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white border-0 font-mono tracking-wider">
+                <Play className="w-5 h-5 mr-2" />
                 [INITIALIZE_PORTFOLIO]
               </Button>
               <Button variant="outline" size="lg" className="cyber-button border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 hover:text-cyan-300 font-mono tracking-wider">
+                <Download className="w-5 h-5 mr-2" />
+                [DOWNLOAD_RESUME]
+              </Button>
+              <Button variant="outline" size="lg" className="cyber-button border-green-500 text-green-400 hover:bg-green-500/10 hover:text-green-300 font-mono tracking-wider">
+                <Mail className="w-5 h-5 mr-2" />
                 [ESTABLISH_CONNECTION]
               </Button>
             </div>
+            
+            {/* Enhanced Status Display */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 max-w-4xl mx-auto">
+              {stats.map((stat, index) => (
+                <div key={index} className="holographic-card p-4 text-center group hover:scale-105 transition-all duration-300">
+                  <div className={`${stat.color} mb-2 flex justify-center group-hover:neon-glow transition-all duration-300`}>
+                    {stat.icon}
+                  </div>
+                  <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
+                  <div className="text-xs font-mono text-slate-400">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+
             <div className="mt-12 flex justify-center space-x-8 text-sm text-slate-500 font-mono">
               <div className="flex items-center">
                 <Cpu className="w-4 h-4 mr-2 text-blue-400" />
@@ -345,7 +429,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Projects Section */}
+      {/* Enhanced Projects Section */}
       <section id="projects" className="py-20 px-6 relative">
         <div className="container mx-auto">
           <div className="text-center mb-16">
@@ -367,7 +451,17 @@ const Index = () => {
                       </div>
                       <span>{project.title}</span>
                     </div>
-                    <ExternalLink className="w-5 h-5 text-slate-400 hover:text-cyan-400 transition-colors" />
+                    <div className="flex items-center space-x-2">
+                      <Badge className={`text-xs ${
+                        project.status === 'ACTIVE' ? 'bg-green-900/30 text-green-400' :
+                        project.status === 'OPTIMIZING' ? 'bg-yellow-900/30 text-yellow-400' :
+                        project.status === 'DEPLOYING' ? 'bg-blue-900/30 text-blue-400' :
+                        'bg-purple-900/30 text-purple-400'
+                      }`}>
+                        {project.status}
+                      </Badge>
+                      <ExternalLink className="w-5 h-5 text-slate-400 hover:text-cyan-400 transition-colors" />
+                    </div>
                   </CardTitle>
                   <CardDescription className="text-base leading-relaxed text-slate-300">
                     {project.description}
@@ -381,6 +475,21 @@ const Index = () => {
                       </Badge>
                     ))}
                   </div>
+                  
+                  {/* Progress Bar */}
+                  <div className="mb-4">
+                    <div className="flex justify-between text-xs font-mono text-slate-400 mb-2">
+                      <span>COMPLETION_RATE</span>
+                      <span>{project.completion}%</span>
+                    </div>
+                    <div className="w-full bg-slate-800 rounded-full h-2">
+                      <div 
+                        className="bg-gradient-to-r from-cyan-400 to-purple-400 h-2 rounded-full transition-all duration-1000 ease-out"
+                        style={{ width: `${project.completion}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                  
                   <div className="text-xs font-mono text-green-400">
                     [PROJECT_STATUS: QUANTUM_ENHANCED]
                   </div>
@@ -391,38 +500,90 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Vision Section */}
+      {/* New Testimonials Section */}
+      <section className="py-20 px-6 relative">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h3 className="text-4xl font-bold mb-4 text-white font-mono tracking-wider neon-glow">
+              [CLIENT_TESTIMONIAL_DATABASE]
+            </h3>
+            <p className="text-slate-400 text-lg max-w-3xl mx-auto font-mono">
+              Quantum feedback from satisfied neural network collaborators.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <Card key={index} className="holographic-card hover:shadow-2xl transition-all duration-500 group">
+                <CardHeader>
+                  <div className="flex items-center space-x-4 mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold">
+                      {testimonial.name.split(' ').map(n => n[0]).join('')}
+                    </div>
+                    <div>
+                      <h4 className="text-white font-mono mb-2">{testimonial.name}</h4>
+                      <p className="text-cyan-400 text-sm font-mono">{testimonial.role}</p>
+                      <p className="text-slate-400 text-xs font-mono">{testimonial.company}</p>
+                    </div>
+                  </div>
+                  <div className="flex space-x-1 mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                    ))}
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-slate-300 leading-relaxed italic">"{testimonial.content}"</p>
+                  <div className="mt-4 text-xs font-mono text-green-400">
+                    [VALIDATION: AUTHENTICATED]
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Enhanced Vision Section */}
       <section className="py-20 px-6 relative">
         <div className="container mx-auto text-center">
           <div className="holographic-card p-12 max-w-5xl mx-auto">
             <h3 className="text-4xl font-bold mb-6 text-white font-mono tracking-wider neon-glow">
               [QUANTUM_VISION_PROTOCOL]
             </h3>
-            <p className="text-xl leading-relaxed text-slate-300 font-mono">
+            <p className="text-xl leading-relaxed text-slate-300 font-mono mb-8">
               Engineering convergence between quantum logic and neural aesthetics — where every algorithm 
               carries dimensional purpose and every visual element processes meaning through quantum networks. 
               Mission parameters: Build technology that transcends dimensions, optimize business quantum workflows, 
               enhance educational neural systems, and enable designers to interface with AI consciousness.
             </p>
-            <div className="mt-8 grid grid-cols-3 gap-8 text-center">
-              <div className="text-cyan-400">
-                <Rocket className="w-8 h-8 mx-auto mb-2 neon-glow" />
-                <div className="font-mono text-sm">INNOVATION</div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+              <div className="group hover:scale-105 transition-all duration-300">
+                <div className="text-cyan-400 mb-4">
+                  <Rocket className="w-12 h-12 mx-auto mb-2 neon-glow group-hover:animate-pulse" />
+                  <div className="font-mono text-lg">INNOVATION</div>
+                  <div className="text-xs text-slate-400 mt-2">Pushing boundaries beyond conventional limits</div>
+                </div>
               </div>
-              <div className="text-purple-400">
-                <Brain className="w-8 h-8 mx-auto mb-2 neon-glow" />
-                <div className="font-mono text-sm">INTELLIGENCE</div>
+              <div className="group hover:scale-105 transition-all duration-300">
+                <div className="text-purple-400 mb-4">
+                  <Brain className="w-12 h-12 mx-auto mb-2 neon-glow group-hover:animate-pulse" />
+                  <div className="font-mono text-lg">INTELLIGENCE</div>
+                  <div className="text-xs text-slate-400 mt-2">Neural networks that think beyond algorithms</div>
+                </div>
               </div>
-              <div className="text-green-400">
-                <Zap className="w-8 h-8 mx-auto mb-2 neon-glow" />
-                <div className="font-mono text-sm">EVOLUTION</div>
+              <div className="group hover:scale-105 transition-all duration-300">
+                <div className="text-green-400 mb-4">
+                  <Zap className="w-12 h-12 mx-auto mb-2 neon-glow group-hover:animate-pulse" />
+                  <div className="font-mono text-lg">EVOLUTION</div>
+                  <div className="text-xs text-slate-400 mt-2">Continuous advancement through quantum learning</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Enhanced Contact Section */}
       <section id="contact" className="py-20 px-6 relative">
         <div className="container mx-auto text-center">
           <h3 className="text-4xl font-bold mb-6 text-white font-mono tracking-wider neon-glow">
@@ -432,6 +593,26 @@ const Index = () => {
             Whether you seek collaborative neural networks, require freelance quantum implementations, 
             or wish to exchange data about technology and design — quantum communication channels are open.
           </p>
+          
+          {/* Interactive Contact Grid */}
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="holographic-card p-6 group hover:scale-105 transition-all duration-300">
+              <Mail className="w-8 h-8 mx-auto mb-4 text-cyan-400 group-hover:neon-glow" />
+              <h4 className="text-white font-mono mb-2">EMAIL_PROTOCOL</h4>
+              <p className="text-slate-400 text-sm font-mono">muddasirhaider048@gmail.com</p>
+            </div>
+            <div className="holographic-card p-6 group hover:scale-105 transition-all duration-300">
+              <Github className="w-8 h-8 mx-auto mb-4 text-purple-400 group-hover:neon-glow" />
+              <h4 className="text-white font-mono mb-2">CODE_REPOSITORY</h4>
+              <p className="text-slate-400 text-sm font-mono">github.com/Muddasir-Haider-Khan</p>
+            </div>
+            <div className="holographic-card p-6 group hover:scale-105 transition-all duration-300">
+              <Linkedin className="w-8 h-8 mx-auto mb-4 text-blue-400 group-hover:neon-glow" />
+              <h4 className="text-white font-mono mb-2">NEURAL_NETWORK</h4>
+              <p className="text-slate-400 text-sm font-mono">Professional Connections</p>
+            </div>
+          </div>
+
           <div className="flex justify-center gap-4 flex-wrap">
             <Button 
               size="lg" 
@@ -463,14 +644,19 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Enhanced Footer */}
       <footer className="py-8 px-6 border-t border-blue-500/20 hologram">
         <div className="container mx-auto text-center">
+          <div className="flex justify-center space-x-6 mb-4">
+            <div className="w-2 h-2 bg-green-400 rounded-full animate-ping"></div>
+            <div className="w-2 h-2 bg-blue-400 rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
+            <div className="w-2 h-2 bg-purple-400 rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
+          </div>
           <p className="text-slate-400 font-mono text-sm">
             © 2024 MUDDASIR.HAIDER.KHAN | QUANTUM_ARCHITECTURE_INITIALIZED | NEURAL_PRECISION_ACTIVE
           </p>
           <div className="mt-2 text-xs text-cyan-400 font-mono">
-            [SYSTEM_STATUS: ALL_NETWORKS_OPERATIONAL]
+            [SYSTEM_STATUS: ALL_NETWORKS_OPERATIONAL] | [UPTIME: {Math.floor(Date.now() / 1000)}s]
           </div>
         </div>
       </footer>
