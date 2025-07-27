@@ -217,11 +217,7 @@ const Index = () => {
                 <Play className="w-5 h-5 mr-2" />
                 View Portfolio
               </Button>
-              <Button variant="outline" size="lg" className="border-amber-700 text-amber-700 hover:bg-amber-50 font-serif">
-                <Download className="w-5 h-5 mr-2" />
-                Download Resume
-              </Button>
-              <Button variant="outline" size="lg" className="border-gray-400 text-gray-700 hover:bg-gray-50 font-serif">
+              <Button size="lg" className="classic-button">
                 <Mail className="w-5 h-5 mr-2" />
                 Get In Touch
               </Button>
@@ -538,7 +534,7 @@ const Index = () => {
             <Button 
               variant="outline" 
               size="lg" 
-              className="border-gray-400 text-gray-700 hover:bg-gray-50 font-serif"
+              className="classic-button"
               onClick={() => window.open('https://github.com/Muddasir-Haider-Khan', '_blank')}
             >
               <Github className="w-5 h-5 mr-2" />
@@ -547,7 +543,7 @@ const Index = () => {
             <Button 
               variant="outline" 
               size="lg" 
-              className="border-blue-600 text-blue-700 hover:bg-blue-50 font-serif"
+              className="classic-button"
               onClick={() => window.open('https://www.linkedin.com/in/muddasir-haider-khan-281515299/', '_blank')}
             >
               <Linkedin className="w-5 h-5 mr-2" />
