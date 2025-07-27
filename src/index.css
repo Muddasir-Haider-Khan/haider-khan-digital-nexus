@@ -5,90 +5,90 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 0%;
+    --background: 255 255 255;
+    --foreground: 0 0 0;
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 0%;
+    --card: 255 255 255;
+    --card-foreground: 0 0 0;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 0%;
+    --popover: 255 255 255;
+    --popover-foreground: 0 0 0;
 
-    --primary: 0 0% 0%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 0 0 0;
+    --primary-foreground: 255 255 255;
 
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 0%;
+    --secondary: 245 245 245;
+    --secondary-foreground: 0 0 0;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 245 245 245;
+    --muted-foreground: 115 115 115;
 
-    --accent: 0 0% 96%;
-    --accent-foreground: 0 0% 0%;
+    --accent: 245 245 245;
+    --accent-foreground: 0 0 0;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 220 53 69;
+    --destructive-foreground: 255 255 255;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 0 0% 0%;
+    --border: 229 229 229;
+    --input: 229 229 229;
+    --ring: 0 0 0;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 0 0% 0%;
-    --sidebar-primary: 0 0% 0%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 96%;
-    --sidebar-accent-foreground: 0 0% 0%;
-    --sidebar-border: 0 0% 90%;
-    --sidebar-ring: 0 0% 0%;
+    --sidebar-background: 255 255 255;
+    --sidebar-foreground: 0 0 0;
+    --sidebar-primary: 0 0 0;
+    --sidebar-primary-foreground: 255 255 255;
+    --sidebar-accent: 245 245 245;
+    --sidebar-accent-foreground: 0 0 0;
+    --sidebar-border: 229 229 229;
+    --sidebar-ring: 0 0 0;
 
     /* Classic black and white palette */
-    --classic-black: 0 0% 0%;
-    --classic-dark-gray: 0 0% 25%;
-    --classic-gray: 0 0% 50%;
-    --classic-light-gray: 0 0% 96%;
-    --classic-white: 0 0% 100%;
+    --classic-black: 0 0 0;
+    --classic-dark-gray: 64 64 64;
+    --classic-gray: 128 128 128;
+    --classic-light-gray: 245 245 245;
+    --classic-white: 255 255 255;
   }
 
   .dark {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
+    --background: 0 0 0;
+    --foreground: 255 255 255;
 
-    --card: 0 0% 10%;
-    --card-foreground: 0 0% 100%;
+    --card: 26 26 26;
+    --card-foreground: 255 255 255;
 
-    --popover: 0 0% 10%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 26 26 26;
+    --popover-foreground: 255 255 255;
 
-    --primary: 0 0% 100%;
-    --primary-foreground: 0 0% 0%;
+    --primary: 255 255 255;
+    --primary-foreground: 0 0 0;
 
-    --secondary: 0 0% 15%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 38 38 38;
+    --secondary-foreground: 255 255 255;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 64%;
+    --muted: 38 38 38;
+    --muted-foreground: 163 163 163;
 
-    --accent: 0 0% 15%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 38 38 38;
+    --accent-foreground: 255 255 255;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 239 68 68;
+    --destructive-foreground: 255 255 255;
 
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
-    --ring: 0 0% 100%;
+    --border: 38 38 38;
+    --input: 38 38 38;
+    --ring: 255 255 255;
 
-    --sidebar-background: 0 0% 10%;
-    --sidebar-foreground: 0 0% 64%;
-    --sidebar-primary: 0 0% 100%;
-    --sidebar-primary-foreground: 0 0% 0%;
-    --sidebar-accent: 0 0% 15%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 0 0% 15%;
-    --sidebar-ring: 0 0% 100%;
+    --sidebar-background: 26 26 26;
+    --sidebar-foreground: 163 163 163;
+    --sidebar-primary: 255 255 255;
+    --sidebar-primary-foreground: 0 0 0;
+    --sidebar-accent: 38 38 38;
+    --sidebar-accent-foreground: 255 255 255;
+    --sidebar-border: 38 38 38;
+    --sidebar-ring: 255 255 255;
   }
 }
 
@@ -105,10 +105,6 @@
     background: linear-gradient(135deg, rgb(255, 255, 255) 0%, rgb(245, 245, 245) 100%);
   }
 
-  .dark body {
-    background: linear-gradient(135deg, rgb(0, 0, 0) 0%, rgb(26, 26, 26) 100%);
-  }
-
   /* Classic paper texture overlay */
   body::before {
     content: '';
@@ -123,12 +119,6 @@
     pointer-events: none;
     z-index: -1;
     opacity: 0.3;
-  }
-
-  .dark body::before {
-    background-image: 
-      radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.1) 1px, transparent 0);
-    opacity: 0.2;
   }
 
   /* Elegant typography */
@@ -219,9 +209,10 @@
 
   /* Classic card styles */
   .classic-card {
-    @apply bg-card border border-border rounded-lg shadow-md;
+    @apply bg-white border border-gray-200 rounded-lg shadow-md;
     @apply hover:shadow-lg transition-all duration-300;
-    background: linear-gradient(145deg, rgb(var(--card)), rgb(var(--muted)));
+    background: linear-gradient(145deg, #ffffff 0%, #f5f5f5 100%);
+    border: 1px solid rgba(0, 0, 0, 0.1);
   }
 
   .classic-card:hover {
@@ -229,36 +220,26 @@
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
   }
 
-  .dark .classic-card:hover {
-    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.1);
-  }
-
   /* Elegant text effects */
   .elegant-title {
-    @apply text-foreground font-sora font-bold;
-    background: linear-gradient(135deg, rgb(var(--foreground)), rgb(var(--muted-foreground)));
+    @apply text-gray-800 font-sora font-bold;
+    background: linear-gradient(135deg, rgb(0, 0, 0), rgb(64, 64, 64));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-  }
-
-  .dark .elegant-title {
-    background: linear-gradient(135deg, rgb(255, 255, 255), rgb(163, 163, 163));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   }
 
   .classic-accent {
-    @apply text-foreground;
+    color: rgb(0, 0, 0);
   }
 
   .classic-black {
-    @apply text-foreground;
+    color: rgb(0, 0, 0);
   }
 
   .classic-gray {
-    @apply text-muted-foreground;
+    color: rgb(128, 128, 128);
   }
 
   /* Decorative elements */
@@ -274,7 +255,7 @@
     transform: translateX(-50%);
     width: 60px;
     height: 3px;
-    background: linear-gradient(90deg, transparent, rgb(var(--foreground)), transparent);
+    background: linear-gradient(90deg, transparent, rgb(0, 0, 0), transparent);
     border-radius: 2px;
   }
 
@@ -288,20 +269,16 @@
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
   }
 
-  .dark .classic-hover:hover {
-    box-shadow: 0 12px 25px rgba(255, 255, 255, 0.1);
-  }
-
   /* Elegant borders */
   .elegant-border {
     border: 2px solid;
-    border-image: linear-gradient(45deg, rgb(var(--foreground)), rgb(var(--muted-foreground))) 1;
+    border-image: linear-gradient(45deg, rgb(0, 0, 0), rgb(128, 128, 128)) 1;
   }
 
   /* Classic section dividers */
   .section-divider {
     @apply w-24 h-1 mx-auto my-8;
-    background: linear-gradient(90deg, transparent, rgb(var(--foreground)), transparent);
+    background: linear-gradient(90deg, transparent, rgb(0, 0, 0), transparent);
     border-radius: 2px;
   }
 
@@ -312,20 +289,10 @@
       linear-gradient(0deg, rgba(0, 0, 0, 0.03), rgba(128, 128, 128, 0.03));
   }
 
-  .dark .vintage-paper {
-    background: 
-      radial-gradient(circle at 100% 50%, transparent 20%, rgba(255, 255, 255, 0.03) 21%, rgba(255, 255, 255, 0.03) 34%, transparent 35%, transparent),
-      linear-gradient(0deg, rgba(255, 255, 255, 0.02), rgba(163, 163, 163, 0.02));
-  }
-
   /* Elegant navigation */
   .nav-classic {
-    @apply backdrop-blur-md bg-background/95 border-b border-border;
+    @apply backdrop-blur-md bg-white/95 border-b border-gray-200;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  }
-
-  .dark .nav-classic {
-    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.05);
   }
 
   /* Classic typography scale */
@@ -346,7 +313,7 @@
   }
 
   .text-caption {
-    @apply text-sm font-inter text-muted-foreground;
+    @apply text-sm font-inter text-gray-600;
   }
 
   /* Classic spacing and layout */
