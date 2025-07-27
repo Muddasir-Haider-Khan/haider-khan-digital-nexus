@@ -105,6 +105,10 @@
     background: linear-gradient(135deg, rgb(255, 255, 255) 0%, rgb(245, 245, 245) 100%);
   }
 
+  .dark body {
+    background: linear-gradient(135deg, rgb(0, 0, 0) 0%, rgb(26, 26, 26) 100%);
+  }
+
   /* Classic paper texture overlay */
   body::before {
     content: '';
@@ -119,6 +123,12 @@
     pointer-events: none;
     z-index: -1;
     opacity: 0.3;
+  }
+
+  .dark body::before {
+    background-image: 
+      radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.1) 1px, transparent 0);
+    opacity: 0.2;
   }
 
   /* Elegant typography */
@@ -209,10 +219,9 @@
 
   /* Classic card styles */
   .classic-card {
-    @apply bg-white border border-gray-200 rounded-lg shadow-md;
+    @apply bg-card border border-border rounded-lg shadow-md;
     @apply hover:shadow-lg transition-all duration-300;
-    background: linear-gradient(145deg, #ffffff 0%, #f5f5f5 100%);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: linear-gradient(145deg, rgb(var(--card)), rgb(var(--muted)));
   }
 
   .classic-card:hover {
@@ -220,26 +229,36 @@
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
   }
 
+  .dark .classic-card:hover {
+    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.1);
+  }
+
   /* Elegant text effects */
   .elegant-title {
-    @apply text-gray-800 font-sora font-bold;
-    background: linear-gradient(135deg, rgb(0, 0, 0), rgb(64, 64, 64));
+    @apply text-foreground font-sora font-bold;
+    background: linear-gradient(135deg, rgb(var(--foreground)), rgb(var(--muted-foreground)));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .elegant-title {
+    background: linear-gradient(135deg, rgb(255, 255, 255), rgb(163, 163, 163));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .classic-accent {
-    color: rgb(0, 0, 0);
+    @apply text-foreground;
   }
 
   .classic-black {
-    color: rgb(0, 0, 0);
+    @apply text-foreground;
   }
 
   .classic-gray {
-    color: rgb(128, 128, 128);
+    @apply text-muted-foreground;
   }
 
   /* Decorative elements */
@@ -255,7 +274,7 @@
     transform: translateX(-50%);
     width: 60px;
     height: 3px;
-    background: linear-gradient(90deg, transparent, rgb(0, 0, 0), transparent);
+    background: linear-gradient(90deg, transparent, rgb(var(--foreground)), transparent);
     border-radius: 2px;
   }
 
@@ -269,16 +288,20 @@
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
   }
 
+  .dark .classic-hover:hover {
+    box-shadow: 0 12px 25px rgba(255, 255, 255, 0.1);
+  }
+
   /* Elegant borders */
   .elegant-border {
     border: 2px solid;
-    border-image: linear-gradient(45deg, rgb(0, 0, 0), rgb(128, 128, 128)) 1;
+    border-image: linear-gradient(45deg, rgb(var(--foreground)), rgb(var(--muted-foreground))) 1;
   }
 
   /* Classic section dividers */
   .section-divider {
     @apply w-24 h-1 mx-auto my-8;
-    background: linear-gradient(90deg, transparent, rgb(0, 0, 0), transparent);
+    background: linear-gradient(90deg, transparent, rgb(var(--foreground)), transparent);
     border-radius: 2px;
   }
 
@@ -289,10 +312,20 @@
       linear-gradient(0deg, rgba(0, 0, 0, 0.03), rgba(128, 128, 128, 0.03));
   }
 
+  .dark .vintage-paper {
+    background: 
+      radial-gradient(circle at 100% 50%, transparent 20%, rgba(255, 255, 255, 0.03) 21%, rgba(255, 255, 255, 0.03) 34%, transparent 35%, transparent),
+      linear-gradient(0deg, rgba(255, 255, 255, 0.02), rgba(163, 163, 163, 0.02));
+  }
+
   /* Elegant navigation */
   .nav-classic {
-    @apply backdrop-blur-md bg-white/95 border-b border-gray-200;
+    @apply backdrop-blur-md bg-background/95 border-b border-border;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .nav-classic {
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.05);
   }
 
   /* Classic typography scale */
@@ -313,7 +346,7 @@
   }
 
   .text-caption {
-    @apply text-sm font-inter text-gray-600;
+    @apply text-sm font-inter text-muted-foreground;
   }
 
   /* Classic spacing and layout */
