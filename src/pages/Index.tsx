@@ -3,12 +3,14 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Github, Linkedin, Mail, ExternalLink, Code, Palette, Brain, Users, Menu, X, Award, Download, Play, TrendingUp, Globe, Star, BookOpen, Briefcase, GraduationCap } from "lucide-react";
+import { Github, Linkedin, Mail, ExternalLink, Code, Palette, Brain, Users, Menu, X, Award, Download, Play, TrendingUp, Globe, Star, BookOpen, Briefcase, GraduationCap, Sun, Moon } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useTheme } from "@/hooks/use-theme";
 
 const Index = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [theme, toggleTheme] = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -137,7 +139,7 @@ const Index = () => {
               </div>
             </div>
 
-            <div className="hidden md:flex space-x-8">
+            <div className="hidden md:flex items-center space-x-8">
               {[
                 { href: "#about", label: "About", icon: <BookOpen className="w-4 h-4" /> },
                 { href: "#services", label: "Services", icon: <Briefcase className="w-4 h-4" /> },
@@ -156,6 +158,15 @@ const Index = () => {
                   </span>
                 </a>
               ))}
+              
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={toggleTheme}
+                className="classic-button p-2"
+              >
+                {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              </Button>
             </div>
 
             <button 
@@ -185,6 +196,15 @@ const Index = () => {
                     <span>{item.label}</span>
                   </a>
                 ))}
+                
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={toggleTheme}
+                  className="classic-button p-2 mx-4"
+                >
+                  {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                </Button>
               </div>
             </div>
           )}
